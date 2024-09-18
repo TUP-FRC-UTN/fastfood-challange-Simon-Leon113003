@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <h2>Formulario de Pedido</h2>
+  <form #form = "ngForm"  (ngSubmit)="onSubmit(form)">
+    <div class="mb-3">
+      <label for="numberPedido" class="form-label">Número de Pedido</label>
+      <input type="number" class="form-control"  name="numberPedido" disabled #numberPedido="ngModel" [(ngModel)]="pedido.numberPedido">
+
+    </div>
+    <div class="mb-3">
+      <label for="name" class="form-label">Nombre</label>
+      <input type="text"  class="form-control" name="namePedido" #namePedido="ngModel" [(ngModel)]="pedido.namePedido">
+
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Descripción</label>
+      <input type="text"  class="form-control" name="description" #description="ngModel" [(ngModel)]="pedido.description">
+
+    </div>
+    <div class="mb-3">
+      <label for="date" class="form-label">Fecha</label>
+      <input type="date"  class="form-control" name="date" #date="ngModel" [(ngModel)]="pedido.date">
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+</div>
+

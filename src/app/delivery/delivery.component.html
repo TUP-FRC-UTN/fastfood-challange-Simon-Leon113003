@@ -1,0 +1,16 @@
+@if (pedidosAEntregar.length > 0) {
+  <h2>Pedidos listos para entregar</h2>
+  <ul class="list-group" *ngFor="let pedido of pedidosAEntregar">
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">{{pedido.numberPedido}} - {{pedido.namePedido}} - {{pedido.description}} <button class="btn btn-success">Entregar</button></li>
+
+
+  </ul>
+
+}@else {
+  <div class="alert alert-secondary" role="alert">
+    No Hay pedidos a entregar!
+  </div>
+}
+
+

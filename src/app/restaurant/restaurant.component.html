@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <div class="row">
+
+    <!--* Lista de Delivery -->
+    <div class="col-md-6">
+      <app-delivery [pedidosAEntregar]="pedidosCocinados"></app-delivery>
+    </div>
+
+    <!--* Lista de la cocina -->
+    <div class="col-md-6">
+      @if (selectPedido && mostrarPedido) {
+        <h2>A cocinar</h2>
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">{{selectPedido.numberPedido}} - {{selectPedido.namePedido}} <button class="btn btn-success" (click)="cargarPedidoTerminado()" >Pedido Terminado</button></li>
+        </ul>
+
+      }@else {
+
+      <h2>Pedidos pendientes de cocinar</h2>
+      @for (pedido of pedidos; track pedido; let index = $index; ) {
+
+        <app-kitchen [numberPedido]="pedido.numberPedido" [namePedido]="pedido.namePedido" [description]="pedido.description" [index]="index" (selectedKitchen)="selectedKitchen($event)"></app-kitchen>
+      }
+      <div class="mt-4"><button class="btn btn-primary" (click)="loadForm()">Agregar Pedido</button></div>
+
+      }
+
+    </div>
+
+    <!--* formualrio de Agregar Peidos -->
+    @if (viewForm) {
+      <div class="col-md-6">
+        <app-pos (onSave)="savePedido()"></app-pos>
+      </div>
+
+    }
+
+
+  </div>
+</div>
+
